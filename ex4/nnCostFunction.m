@@ -74,7 +74,9 @@ for i = 1:length(y)
 	Y(i, y(i)) = 1;
 end
 
-J = sum((-Y .* log(a3) - (1 - Y) .* log(1 - a3))(:)) / m + lambda / 2 / m * (sum((Theta1(:, 2:size(Theta1, 2)) .^ 2)(:)) + sum((Theta2(:, 2:size(Theta2, 2)) .^ 2)(:)));
+reg_cost = lambda / 2 / m * (sum((Theta1(:, 2:size(Theta1, 2)) .^ 2)(:)) + sum((Theta2(:, 2:size(Theta2, 2)) .^ 2)(:)));
+
+J = sum((-Y .* log(a3) - (1 - Y) .* log(1 - a3))(:)) / m + reg_cost;
 
 
 
